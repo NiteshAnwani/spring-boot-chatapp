@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/script.js"></script>
+<link href="/css/login_style.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="login-page">
+  <div class="form" method="post" action="/register" command="user">
+    <form class="register-form">
+      <input type="text" placeholder="First Name" name="name"/>
+      <input type="text" placeholder="Last Name" name="last_name"/>
+      <input type="password" placeholder="Password" name="password"/>
+      <input type="text" placeholder="Email Address" name="email"/>
+      <button type="submit">create</button>
+      <p class="message">Already registered? <a href="javascript:toogleform()">Sign In</a></p>
+    </form>
+    <form class="login-form" th:action="@{/login}" method="post"> 
+    <div th:if="${param.error}" class="alert alert-error">    
+                    Invalid username and password.<p>${param.error}</p>
+                </div>
+                <div th:if="${param.logout}" class="alert alert-success"> 
+                    You have been logged out.
+                </div>
+      <input type="text" placeholder="username" name="username"/>
+      <input type="password" placeholder="password" name="password"/>
+      <button type="submit">login</button>
+      <p class="message">Not registered? <a href="javascript:toogleform()">Create an account</a></p>
+    </form>
+  </div>
+</div>     
+</body>
