@@ -1,6 +1,7 @@
 package com.training.chatapp.model;
 
 import java.util.Collection;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -15,13 +16,16 @@ public class CustomUserDetails extends User implements UserDetails {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return null;
-		//return new SimpleGrantedAuthority("ROLE_" + role.getRole());
+
+		return getRoles()
+				.stream()
+				.map(role -> new SimpleGrantedAuthority("ROLE_" + role.getRole()))
+				.collect(Collectors.toList());
 	}
 
 	@Override
 	public String getUsername() {
-		return super.getName();
+		return super.getEmail();
 	}
 
 	public String getPassword() {

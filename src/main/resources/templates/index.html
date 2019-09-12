@@ -1,0 +1,23 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<p th:text="${test}">vv</p>
+<table class="table table-hover">
+  <thead>
+    <tr><th>Id</th><th>Name</th><th>Salary</th><th>Designation</th><th>Edit</th><th>Delete</th></tr>  
+  </thead>
+  <tbody>
+  
+  <tr th:each="prod: ${user}">
+      <td th:text="${prod.name}">Oranges</td>
+      <td th:text="${prod.roles[0].role}">Oranges</td>
+    </tr>
+   </tbody>
+</table> 
+</body>
+</html>

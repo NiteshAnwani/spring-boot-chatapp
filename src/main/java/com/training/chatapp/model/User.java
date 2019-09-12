@@ -32,11 +32,10 @@ public class User {
 	private String lastName;
 	@Column(name = "active")
 	private int active;
-//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-//    private Set<Role> roles;
-	@Column(name = "role")
-	private String role;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
+	
 
 	public User() {
 	}
@@ -44,21 +43,15 @@ public class User {
 	public User(User users) {
 		this.active = users.getActive();
 		this.email = users.getEmail();
-//        this.roles = users.getRoles();
+        this.roles = users.getRoles();
 		this.name = users.getName();
 		this.lastName = users.getLastName();
 		this.id = users.getId();
 		this.password = users.getPassword();
-		this.role = users.getRole();
+		
 	}
 
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
+	
 
 	public int getId() {
 		return id;
@@ -108,4 +101,13 @@ public class User {
 		this.active = active;
 	}
 
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
+	
+	
 }

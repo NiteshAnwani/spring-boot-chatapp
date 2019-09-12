@@ -51,7 +51,7 @@ public class AccountController extends WebMvcConfigurerAdapter {
 	public String index(Model m){ 
 		List<User> user=u.findAll();
 		m.addAttribute("user", user);
-		
+		m.addAttribute("test", "testing");
         return "index";  
     }  
 	
