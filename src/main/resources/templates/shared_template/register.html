@@ -1,10 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link href="/css/login_style.css" rel="stylesheet" />
+
 </head>
 <body>
-Register
+    <div class="login-page">
+  <div class="form">
+    <form class="login-form" action="#" th:action="@{/register}" th:object="${user}" method="post">
+      <input type="text" placeholder="First Name" th:field="*{name}" name="name"/>
+      <input type="text" placeholder="Last Name" th:field="*{lastName}" name="last_name"/>
+      <input type="password" placeholder="Password" th:field="*{password}" name="password"/>
+       <div th:if="${param.exist}" class="alert alert-error">    
+                   Email ID Already Exist.
+                </div>
+      <input type="text" placeholder="Email Address" th:field="*{email}" name="email"/>
+      <button type="submit">create</button>
+      <p class="message">Already registered? <a href="/login">Sign In</a></p>
+    </form>
+  </div>
+</div>     
 </body>
-</html>
